@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+
+class ProductDetailsScreen extends StatelessWidget {
+  final String category;
+
+  ProductDetailsScreen({required this.category});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("$category Products")),
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            Text(
+              "Men’s Hoodie",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text("Price: R300.00"),
+            DropdownButton<String>(
+              hint: Text("Select Size"),
+              items: ['S', 'M', 'L', 'XL', 'XXL']
+                  .map((size) => DropdownMenuItem(value: size, child: Text(size)))
+                  .toList(),
+              onChanged: (value) {},
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Add to cart logic
+              },
+              child: Text("Add to Cart"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
